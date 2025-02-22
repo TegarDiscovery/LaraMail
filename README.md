@@ -25,12 +25,14 @@ docker-compose up -d
 ```bash
 composer install
 php artisan key:generate
-php artisan serve
 ```
 ### 4. **Konfigurasi .env**
 ```
+cp .env.example .env
+```
+```
 MAIL_MAILER=smtp
-MAIL_HOST=mailpit
+MAIL_HOST=localhost
 MAIL_PORT=1025
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
@@ -39,15 +41,12 @@ MAIL_FROM_ADDRESS="test@example.com"
 MAIL_FROM_NAME="Laravel App"
 ```
 ### 5. **Mengirim Email Tes**
-Gunakan Tinker untuk mengirim email:
 ```bash
-php artisan tinker
+php artisan serve
 ```
 Kemudian jalankan:
 ```php
-Mail::raw('Test email dari Laravel + MailPit', function($msg) {
-    $msg->to('test@example.com')->subject('Test Subject');
-});
+http://127.0.0.1:8000/test-email
 ```
 ### 6. **Cek Email di MailPit**
 Buka di browser:
